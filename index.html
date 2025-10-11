@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <meta property="article:published_time" content="2023-03-06T22:30:34.000Z" />
+    <meta property="article:published_time" content="2024-12-14T17:17:00.000Z" />
 </head>
 
 <body>
@@ -13,24 +13,198 @@
                     <h1>Backdating your Medium posts!</h1>
                 </div>
                 <p class="pw-post-body-paragraph">
-                    This is a test HTML page that you can import to Medium as 
-                    a template to backdate your post.
-                </p>
-                <p class="pw-post-body-paragraph">
-                    You'll know when you've successfully backdated your post
-                    by looking at the bottom of your article when you import
-                    to Medium: it should say something like: "Originally 
-                    published at *** on [Whatever your date is]."
-                </p>
-                <p class="pw-post-body-paragraph">
-                    If you enjoyed this tutorial and method, please 
-                    drop me a follow on 
-                    <a href="https://liaogg.medium.com">Medium</a>
-                    and 
-                    <a href="https://github.com/kevinMEH">Github.</a>
-                </p>
-                <p class="pw-post-body-paragraph">
-                    Thanks, and bye!
+Modernizing Dental Clinic Management: The Dentora Case Study
+
+Senior PM case study — cloud-first, trust-by-design, and measurable impact
+
+TL;DR — As Senior Product Manager, I led the research, strategy, and MVP launch of Dentora (fictional placeholder), a modern, cloud-based platform for dental clinics. We targeted the biggest failures of legacy systems (clunky UI, siloed data, manual reminders, weak reporting). The MVP—rolled out to 3 pilot clinics—delivered ~40% faster admin tasks, ~50% fewer no-shows, 90% CSAT among front-desk staff, and an estimated 5–10% revenue lift from better schedule utilization. This post covers the product reasoning, the UX, and the trade-offs that made the MVP shippable in 9 months.
+
+⸻
+
+My Role & Scope (what I owned)
+	•	Role: Senior Product Manager (founding PM)
+	•	Accountabilities: Discovery & interviews, problem framing, MVP scope, roadmap, execution cadence, success metrics, stakeholder alignment
+	•	Team (lean): 1 UX lead + 2 engineers + me (plus a part-time clinical advisor)
+	•	Timeline: ~9 months to MVP; 8 weeks pilot
+
+⸻
+
+Introduction — Why clinics needed something new
+
+Walk into a typical clinic and you’ll see staff wrestling with desktop-era software: dense menus, slow clicks, separate tools for reminders, billing, and imaging. Data is trapped on-office PCs, reporting is manual, and double-entry is normal. The result? Lost time, costly no-shows, and zero real-time visibility for owners.
+
+Dentora (name is a fictional placeholder) rethinks that stack as a cloud-first platform that unifies appointments, patient records, billing, and multi-branch operations—with automation in the right places and governance (roles, auditability) built in.
+
+⸻
+
+Problem Definition — Pain you can feel at the front desk
+
+From discovery sessions and on-site observation, the same themes kept repeating:
+	•	Clunky, slow UI → long training, frequent mistakes, frustrated teams
+	•	Local servers, no cloud → no remote access, fragile backups, per-office data silos
+	•	Fragmented workflows → separate tools for reminders, imaging, billing → double entry and frequent mismatches
+	•	Cumbersome scheduling → error-prone calendars, manual calls → high no-show rates
+	•	Weak reporting → owners “fly blind,” spend hours exporting spreadsheets
+	•	Insufficient access control → shared logins or all-or-nothing permissions (security risk)
+
+This wasn’t a facelift problem; it was a workflow and reliability problem.
+
+⸻
+
+Research & Insights — What users actually need
+
+I combined contextual inquiry (shadowing) with semi-structured interviews across three roles:
+	•	Dentist (busy chairside): wants charting and history fast, ideally on a tablet; x-rays near notes; minimal clicks
+	•	Receptionist/Coordinator (ops hub): needs an error-proof calendar, automated reminders, one place for billing & receipts
+	•	Owner/Manager (visibility & scale): needs a simple daily dashboard, real-time metrics, and multi-clinic roll-ups
+
+Representative quotes:
+	•	“I spend more time hunting in the software than with the patient.” — Dentist
+	•	“Every morning I reconcile three systems just to confirm the day.” — Receptionist
+	•	“Two clinics, two databases. I literally remote into both.” — Owner
+
+Personas (short):
+	•	Dr. David — Chairside speed and clarity over configurability
+	•	Sara — Calendar mastery, zero double booking, fewer phone calls
+	•	Aria — Roll-ups across branches, controlled access, dependable numbers
+
+⸻
+
+Design Goals — What “better” means (in measurable terms)
+	•	Simplicity & speed: cut time on scheduling/admin by 30–50%
+	•	Single source of truth: eliminate double entry; link appointments ↔ records ↔ billing
+	•	Cloud & scale: secure access anywhere; first-class multi-clinic setup
+	•	Trust & control: robust role-based access, auditability, clear confirmations
+	•	Patient engagement (indirect): automated reminders to reduce no-shows by ~30–50%
+
+UX principles: clarity (obvious hierarchy), control (sane defaults, safe changes), responsiveness (desktop → tablet), healthcare-appropriate visual language.
+
+⸻
+
+Ideation & MVP Definition — Smallest system that proves value
+
+I facilitated concept workshops with design/engineering and a clinical advisor, then cut scope to de-risk the riskiest assumptions first.
+
+MVP modules (v1.0):
+	•	Scheduling: modern, color-coded calendar; drag-drop; auto SMS/email reminders; conflict checks; “today” overview
+	•	Patient records: unified profile, medical alerts, notes (templated), attachments (PDF/x-ray images), billing history
+	•	Billing & invoices: essential invoicing, payments, end-of-day summary; simple insurance export (not full adjudication)
+	•	Dashboard & reports: at-a-glance KPIs (today’s schedule, MTD revenue, new patients), a few sane canned reports
+	•	Users & roles: presets for Dentist/Receptionist/Admin; granular permissions; audit logs (backend)
+	•	Cloud infra: web app, encryption, auto-backup, zero install
+
+Deliberate trade-offs (why, not just what):
+	•	Web-first, no native apps (MVP) → ship sooner; tablets supported via responsive UI
+	•	Manual where OK (e.g., imaging as attachments) → defer heavy integrations; validate demand first
+	•	Minimal reports → a few accurate, real-time KPIs beat a clunky report builder
+	•	Localization later → core product-market fit before regional depth
+	•	No patient portal (MVP) → focus on staff workflows; engage patients via reminders first
+
+⸻
+
+Key Solutions — How the UX solves the real pain
+
+1) Patient Records (fast context at a glance)
+	•	Header: identity + alerts + next appointment + balance
+	•	Tabs: Profile/History, Notes (templated, timestamped, author-tagged), Attachments, Billing
+	•	Bi-directional links: from appointment → record and back, killing the “hunt across modules” tax
+
+2) Appointment Scheduling (error-proof and proactive)
+	•	Day/week/agenda views; provider/room columns; drag-drop reschedule
+	•	Smart checks: prevent double-book; flag duplicate patient bookings; prompt on odd procedure combos
+	•	Auto-reminders + confirmations: configurable touchpoints; patient confirm/reschedule updates the schedule
+	•	“Today’s Overview”: real-time list; Check-in and No-show statuses for staff & providers
+
+3) Financial Dashboard & EOD
+	•	Home KPIs: today’s billed/collected, MTD revenue, A/R; drill-downs by click
+	•	End-of-Day auto-generated: treatments, revenue, issues; printable/email
+	•	Simple provider payout view (production and suggested payout), ending spreadsheet weekend rituals
+
+4) Roles & Access (trust by design)
+	•	Preset roles with toggles (edit schedule, view financials, manage users, write notes)
+	•	Owner can lock down financials; dentists can’t alter billing; reception can’t see payroll
+	•	Audit logs (backend) for critical actions → accountability if something goes wrong
+
+5) Multi-clinic (one data backbone, many sites)
+	•	Single cloud DB with clinic tags → filter by site or “All Clinics”
+	•	Cross-clinic patient search (with permissions) → no duplicate records when patients visit another branch
+	•	Centralized standards (codes, pricing, templates) → consistent ops across locations
+
+UI direction (brief): calm healthcare palette (blues/teals), clear typography, icon+label nav (no cryptic icons), generous touch targets, responsive for iPad. Contextual help and tooltips to make the app self-teaching.
+
+⸻
+
+Execution — How we shipped with a tiny team
+	•	Cadence: weekly sprints; Friday demo (2-min Looms for async stakeholders)
+	•	Definition of Done: code + QA on desktop/tablet + acceptance criteria + updated spec
+	•	Stakeholder comms: jargon-free weekly updates (business impact, not tech details)
+	•	Quality bar: “no shortcuts on trust/data”; scrappy only in non-critical UI polish
+
+⸻
+
+MVP Launch & Results — What changed in the pilot
+
+We onboarded 3 clinics (solo practice, 3-dentist family clinic, 2-site multi-specialty). I led training and shadowed the first two weeks.
+
+Impact (first 8 weeks):
+	•	~40% reduction in front-desk time on scheduling/admin (auto-reminders + simpler calendar)
+	•	~50% fewer no-shows, from reminders + at-a-glance confirmation states
+	•	90% CSAT from reception/office staff; “feels natural,” “training took a day, not a week”
+	•	5–10% revenue lift from better schedule utilization (fewer empty slots, faster rescheduling)
+	•	Clinician wins: notes completed chairside on tablet; no evening charting backlog
+
+What we learned and fixed fast:
+	•	Payout visibility for associates mattered → added a clearer production/payout view
+	•	Reminder time-zones bug → patched in week one
+	•	Family linking under-used → improved affordance and walkthrough copy
+
+Stakeholders moved from cautious to supportive. The owners finally had a morning dashboard they could trust; staff stopped “fighting the software.”
+
+⸻
+
+Decision Log — Trade-offs that made the difference
+	•	Governance vs growth: chose governance first (roles, reminders, audit) → fewer costly failures later
+	•	Automation vs manual: manual imaging & some ops in MVP → shipped in 9 months, integrated later
+	•	Reports breadth vs clarity: few high-value KPIs now → expand with usage signals
+	•	Native vs responsive: responsive web now → native once usage justifies it
+	•	Localization now vs PMF first: PMF first → local depth after signals
+
+⸻
+
+What I’d measure next (to de-risk scale)
+	•	Scheduling throughput: time to book; rebook rate; no-show delta by reminder cadence
+	•	Data integrity: mismatch rates (appt ↔ billing), duplicate records
+	•	Multi-clinic ops: cross-site usage, owner logins per week, A/R trend
+	•	Adoption curve: active users by role; time-to-first-value post-onboarding
+	•	Support load: tickets per clinic; top 3 themes → inform roadmap
+
+⸻
+
+Reflections & Next Steps — From solid MVP to category standard
+
+What’s still missing (by design):
+	•	Imaging integration & dental charting: real-time x-ray viewers; interactive tooth chart; structured conditions/restorations
+	•	Patient portal/app: online booking, secure forms, record sharing; reduce phone time further
+	•	AI assistance: smarter slot suggestions, risk-based double-confirmations, voice-to-notes templates
+	•	Analytics depth: retention, treatment acceptance, revenue by procedure; simple report builder
+	•	Localization: language/formatting for target markets; insurance workflows per country
+
+Vision: Clinic software should disappear into the background—reliable, fast, and intelligible—so teams can focus on care, not clicks. Dentora proves that when you fix the workflow and earn trust by design, the numbers follow.
+
+⸻
+
+Appendix — Project truths at a glance
+	•	Team: 1 UX, 2 Eng, 1 Senior PM (me), part-time clinical advisor
+	•	Time to MVP: ~9 months
+	•	Pilot: 3 clinics, 8 weeks
+	•	Key metrics: −40% admin time, −50% no-shows, 90% CSAT, +5–10% revenue utilization
+	•	Stack (high level): Cloud web app; encryption; auto-backup; role-based auth; audit logs
+
+⸻
+
+Note: “Dentora” is a fictional placeholder used for this portfolio case study. Metrics are realistic, early-stage pilot outcomes based on the described MVP scope.
+
+If you’d like to discuss product strategy and healthcare ops, connect with me on LinkedIn. (add your link)
                 </p>
             </section>
         </article>
